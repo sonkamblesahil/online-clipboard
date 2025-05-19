@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Clipboard - Share Text Instantly</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-clipboard"></i> Online Clipboard</h1>
+                <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+
+        
+        <div class="main-content">
+            <!-- Share Section -->
+            <div class="section share-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-share-alt"></i> Share Text</h2>
+                </div>
+                <div class="input-group">
+                    <textarea id="textInput" placeholder="Enter text to share..."></textarea>
+                    <button onclick="shareText()" class="primary-btn">
+                        <i class="fas fa-link"></i> Generate Link
+                    </button>
+                </div>
+                <div id="linkDisplay" class="result-box">
+                    <div class="share-options" style="display: none;">
+                        <div class="share-option">
+                            <h3><i class="fas fa-link"></i> Share Link</h3>
+                            <div class="copy-group">
+                                <input type="text" id="shareLink" readonly>
+                                <button onclick="copyToClipboard('shareLink')" class="copy-btn">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="share-option">
+                            <h3><i class="fas fa-key"></i> Share Key</h3>
+                            <div class="copy-group">
+                                <input type="text" id="shareKey" readonly>
+                                <button onclick="copyToClipboard('shareKey')" class="copy-btn">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="share-option">
+                            <h3><i class="fas fa-qrcode"></i> QR Code</h3>
+                            <div id="qrcode"></div>
+                            <button onclick="downloadQR()" class="download-btn">
+                                <i class="fas fa-download"></i> Download QR
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Retrieve Section -->
+            <div class="section retrieve-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-download"></i> Retrieve Text</h2>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="keyInput" placeholder="Enter key or paste link...">
+                    <button onclick="retrieveText()" class="primary-btn">
+                        <i class="fas fa-search"></i> Retrieve
+                    </button>
+                </div>
+                <div id="retrievedText" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Ad Section - Bottom -->
+        <div class="ad-container bottom-ad">
+            <div class="ad-placeholder">
+                <i class="fas fa-ad"></i>
+                <p>Advertisement Space</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with <i class="fas fa-heart"></i> for easy text sharing</p>
+            <div class="footer-links">
+                <a href="#" onclick="showPrivacyPolicy()">Privacy Policy</a>
+                <a href="#" onclick="showTerms()">Terms of Service</a>
+                <a href="#" onclick="showContact()">Contact</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for Privacy Policy -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>Your privacy is important to us. We do not store any personal information. All shared text is automatically deleted after retrieval or after 24 hours.</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
